@@ -5,11 +5,19 @@
  */
 package control;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author Uffe
  */
 public class Facade {
+    
+    EntityManager em;
+    public Facade() {
+        em = Persistence.createEntityManagerFactory("Ca2ORMtruePU").createEntityManager();
+    }
     
     
     
