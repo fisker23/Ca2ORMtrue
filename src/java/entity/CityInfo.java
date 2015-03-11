@@ -26,6 +26,7 @@ public class CityInfo implements Serializable {
 
     private int zipCode;
     private String city;
+    //Denne kommentar er rimelig vild
     public List<Address> addressList = new ArrayList();
 
     public CityInfo(int id, int zipCode, String city) {
