@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Andreas Fisker
+ * @author Uffe
  */
 @Entity
 public class Phone implements Serializable {
@@ -21,27 +21,42 @@ public class Phone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int number;
+    private int phoneNumber;
     private String description;
 
-    public int getId() {
-        return id;
-    }
-
-    public Phone(int id, int number, String description) {
+    public Phone(int id, int phoneNumber, String description) {
         this.id = id;
-        this.number = number;
+        this.phoneNumber = phoneNumber;
         this.description = description;
     }
 
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    
     public Phone() {
     }
 
     
-    
+    public int getId() {
+        return id;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
 
-   
+    
 }

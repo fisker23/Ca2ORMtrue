@@ -28,8 +28,7 @@ public class InfoEntity implements Serializable {
     @OneToMany
     public List<Phone> phoneList = new ArrayList();
 
-    public InfoEntity(int id, String email) {
-        this.id = id;
+    public InfoEntity(String email) {
         this.email = email;
     }
 
@@ -45,5 +44,22 @@ public class InfoEntity implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Phone> getPhoneList() {
+        return phoneList;
+    }
+
+    public void setPhoneList(List<Phone> phoneList) {
+        this.phoneList = phoneList;
+    }
+    
 
 }

@@ -46,6 +46,30 @@ public class Address implements Serializable {
     public Address() {
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getAdditionalInfo() {
+        return AdditionalInfo;
+    }
+
+    public void setAdditionalInfo(String AdditionalInfo) {
+        this.AdditionalInfo = AdditionalInfo;
+    }
+
+    public List<InfoEntity> getIEList() {
+        return IEList;
+    }
+
+    public void setIEList(List<InfoEntity> IEList) {
+        this.IEList = IEList;
+    }
+    
    
     
 }

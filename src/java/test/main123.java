@@ -5,7 +5,7 @@
  */
 package test;
 
-import entity.Person;
+import entity.Hobby;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -16,10 +16,11 @@ import javax.persistence.Persistence;
 public class main123 {
     public static void main(String[] args) {
 //        Persistence.generateSchema("Ca2ORMtruePU", null);
-        EntityManager em = Persistence.createEntityManagerFactory("Ca2ORMtruePU").createEntityManager();
-        
+       EntityManager em = Persistence.createEntityManagerFactory("Ca2ORMtruePU").createEntityManager();
+       Hobby hobby = new Hobby(1, "hej", "Sto");
+//        
         em.getTransaction().begin();
-        em.persist(new Person("Hej", "Med dig"));
+        em.persist(hobby);
         em.getTransaction().commit();
     }
 }

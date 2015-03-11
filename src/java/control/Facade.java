@@ -5,6 +5,7 @@
  */
 package control;
 
+import entity.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -19,6 +20,9 @@ public class Facade {
         em = Persistence.createEntityManagerFactory("Ca2ORMtruePU").createEntityManager();
     }
     
+    
+    
+            
     
     
 }
