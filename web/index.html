@@ -10,16 +10,19 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-            <script>
+<!--            <script>
                 $(document).ready(function () {
-                 $("#btn1").click() 
+                 $("#btn1").click(makeAjaxCall);
+                 $("#btn1").click(makeAjaxPersonCall);
                 });
                 
                 function makeAjaxCall() {
                     $("#div1").load("api");
+                    alert("hmm");
                 }
                 function makeAjaxPersonCall(){
                     var request = $.ajax({
+                        alert("kage");
                         url: "api/person",
                         type: "GET",
                         dataType: "json"
@@ -36,9 +39,44 @@ and open the template in the editor.
                     alert("Request failed: " + textStatus);
                 });
                 }
-            </script>
+            </script>-->
+            
+<script>
+            $(document).ready(function () {
+                $("#btn1").click(makeAjaxCall);
+                $("#btn2").click(makeAjaxProjectCall);
+            }
+            );
+            function makeAjaxCall() {
+                $("#divting").load("api");
+            }
+            function makeAjaxProjectCall() {
+                alert("HEllO woewlækfjg");
+                var request = $.ajax({
+                    url: "api/person",
+                    type: "GET",
+                    dataType: "json",
+                });
+                request.done(function (links) {
+                    alert(links);
+                    $("#persons").html(msg);
+                    for(var i = 0; i < links.length; i++){
+                        var li = "<li>";
+                        li += "<a href='"+links[i].link+"'>"+links[i].name+"</a></li>";
+                        $("#divting").append(li);
+                    }
+                });
+                request.fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+
+            }
+        </script>
     </head>
     <body>
-        <div>Hello world!</div>
+        <div id="div1">Hello world!
+            <button id="btn1">Knap1</button>
+            <button id="btn2">Knap2</button>
+        </div>
     </body>
 </html>
