@@ -48,22 +48,18 @@ and open the template in the editor.
             }
             );
             function makeAjaxCall() {
-                $("#divting").load("api");
+                $("#div1").load("api");
             }
             function makeAjaxProjectCall() {
                 alert("HEllO woewlækfjg");
                 var request = $.ajax({
-                    url: "api/person",
+                    url: "person/complete",
                     type: "GET",
                     dataType: "json",
                 });
                 request.done(function (links) {
                     alert(links);
-                    $("#persons").html(msg);
-                    for(var i = 0; i < links.length; i++){
-                        var li = "<li>";
-                        li += "<a href='"+links[i].link+"'>"+links[i].name+"</a></li>";
-                        $("#divting").append(li);
+                    $("#persons").html(links);
                     }
                 });
                 request.fail(function (jqXHR, textStatus) {
@@ -77,6 +73,9 @@ and open the template in the editor.
         <div id="div1">Hello world!
             <button id="btn1">Knap1</button>
             <button id="btn2">Knap2</button>
+            <ul id="persons">
+                
+            </ul>
         </div>
     </body>
 </html>

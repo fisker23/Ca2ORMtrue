@@ -7,13 +7,12 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import control.Facade;
 import entity.Person;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
@@ -32,45 +31,48 @@ import org.eclipse.persistence.sessions.Project;
  * @author Andreas Fisker
  */
 //Ca2Orm
-@Path("api")
+@Path("")
 public class ApiResource {
 
     @Context
-    private Map<Integer,Person> personMap = new HashMap<Integer, Person>(); 
+    private List<Person> personMap = new ArrayList(); 
     Gson gson = new Gson();
+    Facade f = new Facade("Ca2ORMtruePU");
     /**
      * Creates a new instance of ApiResource
      */
     public ApiResource() {
+        for (int i = 0; i < 10; i++) {
+        }
     }
 
     /**
      * Retrieves representation of an instance of rest.ApiResource
      * @return an instance of java.lang.String
      */
-    @GET
-    @Produces("application/json")
-    public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
-    }
-    
+//    @GET
+//    @Produces("application/json")
+//    public String getJson() {
+//        //TODO return proper representation object
+//        throw new UnsupportedOperationException();
+//    }
+//    
     @GET
     @Produces("application/json")
     @Path("/person/complete")
     public String getAllPjson(){
-        
-        return gson.toJson(personMap.values()); 
+        personMap = f.getAllPersons();
+        return gson.toJson(personMap); 
     }
     @GET
     @Produces("application/json")
     @Path("/person/{id}")
     public String getOnePjson(@PathParam("id") int id){
-        Person p = personMap.get(id);
-        if(!personMap.containsKey(id)){
-            throw new WebApplicationException("No person with the given ID found.", Response.Status.NOT_FOUND);
-        }
-        return gson.toJson(p); 
+//        Person p = personMap.get(id);
+//        if(!personMap.containsKey(id)){
+//            throw new WebApplicationException("No person with the given ID found.", Response.Status.NOT_FOUND);
+//        }
+        return ""; 
     }
     
     @GET
@@ -89,16 +91,16 @@ public class ApiResource {
     @Produces("application/json")
     @Path("/person/contactinfo/{id}")
     public String getOneContactPjson(@PathParam("id") int id){
-         
-          Person p = personMap.get(id);
-        if(!personMap.containsKey(id)){
-            throw new WebApplicationException("No person with the given ID found.", Response.Status.NOT_FOUND);
-        }
-        JsonObject jo = new JsonObject();
-        jo.addProperty("firstName", p.getFirstName());
-        jo.addProperty("lastName", p.getLastName());
-        jo.addProperty("email",p.getEmail());
-        return gson.toJson(jo); 
+//         
+//          Person p = personMap.get(id);
+//        if(!personMap.containsKey(id)){
+//            throw new WebApplicationException("No person with the given ID found.", Response.Status.NOT_FOUND);
+//        }
+//        JsonObject jo = new JsonObject();
+//        jo.addProperty("firstName", p.getFirstName());
+//        jo.addProperty("lastName", p.getLastName());
+//        jo.addProperty("email",p.getEmail());
+        return ""; //gson.toJson(jo); 
     }
     /**
      * PUT method for updating or creating an instance of ApiResource
