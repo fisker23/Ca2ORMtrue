@@ -6,11 +6,39 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Ca2ORM</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                 $("#btn1").click() 
+                });
+                
+                function makeAjaxCall() {
+                    $("#div1").load("api");
+                }
+                function makeAjaxPersonCall(){
+                    var request = $.ajax({
+                        url: "api/person",
+                        type: "GET",
+                        dataType: "json"
+                    });
+                    request.done(function (persons)
+                            $("#persons").html(msg);
+                    for(var i = 0; i < persons.length; i++){
+                        var li = "<li>";
+                        li += "<a href='"+persons[i].link+"'>"+persons[i].name+"</a></li>";
+                        $("#divting").append(li);
+                    }
+                });
+                request.fail(function (jqXHR, textStatus) {
+                    alert("Request failed: " + textStatus);
+                });
+                }
+            </script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>Hello world!</div>
     </body>
 </html>
