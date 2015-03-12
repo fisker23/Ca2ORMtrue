@@ -5,9 +5,8 @@
  */
 package test;
 
-import entity.Hobby;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import control.Facade;
+import entity.Person;
 
 /**
  *
@@ -16,11 +15,8 @@ import javax.persistence.Persistence;
 public class main123 {
     public static void main(String[] args) {
 //        Persistence.generateSchema("Ca2ORMtruePU", null);
-       EntityManager em = Persistence.createEntityManagerFactory("Ca2ORMtruePU").createEntityManager();
-       Hobby hobby = new Hobby(1, "hej", "Sto");
-//        
-        em.getTransaction().begin();
-        em.persist(hobby);
-        em.getTransaction().commit();
+       Facade fc = new Facade("Ca2ORMtruePU");
+       Person p = fc.createPerson("Hej", "123", "laks", null, "er ", "laka", "2700");
+        System.out.println(p.getId());
     }
 }

@@ -53,6 +53,6 @@ public class Person extends InfoEntity{
 
     public Person() {
     }
-   
+    
 
 }

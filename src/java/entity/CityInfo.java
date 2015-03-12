@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,18 +21,17 @@ import javax.persistence.Id;
 @Entity
 public class CityInfo implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-
-    private int zipCode;
+    private String zip;
     private String city;
     //Denne kommentar er rimelig vild
+    
+    @OneToMany(mappedBy = "cityInfo")
     public List<Address> addressList = new ArrayList();
 
-    public CityInfo(int id, int zipCode, String city) {
-        this.id = id;
-        this.zipCode = zipCode;
+    public CityInfo(String zipCode, String city) {
+        this.zip = zipCode;
         this.city = city;
     }
 
@@ -40,20 +40,12 @@ public class CityInfo implements Serializable {
     }
     
     
-    public int getId() {
-        return id;
+    public String getZipCode() {
+        return zip;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setZipCode(String zipCode) {
+        this.zip = zipCode;
     }
 
     public String getCity() {

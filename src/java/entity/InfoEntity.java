@@ -8,10 +8,13 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -26,13 +29,25 @@ public class InfoEntity implements Serializable {
     private int id;
     private String email;
     @OneToMany
+    @JoinColumn(name = "fkInfoEntity")
     public List<Phone> phoneList = new ArrayList();
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Address address;
 
     public InfoEntity(String email) {
         this.email = email;
     }
 
     public InfoEntity() {
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+        this.address.addIE(this);
     }
     
     

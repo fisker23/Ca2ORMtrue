@@ -24,8 +24,7 @@ public class Phone implements Serializable {
     private int phoneNumber;
     private String description;
 
-    public Phone(int id, int phoneNumber, String description) {
-        this.id = id;
+    public Phone(int phoneNumber, String description) {
         this.phoneNumber = phoneNumber;
         this.description = description;
     }

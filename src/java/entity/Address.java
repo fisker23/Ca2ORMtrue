@@ -8,10 +8,12 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 /**
@@ -26,8 +28,11 @@ public class Address implements Serializable {
     private int id;
     private String street;
     private String AdditionalInfo;
-    @OneToMany
+    
+    @OneToMany(mappedBy = "address", cascade = CascadeType.ALL)
     public List<InfoEntity> IEList = new ArrayList();
+    @ManyToOne
+    private CityInfo cityInfo;
 
     public int getId() {
         return id;
@@ -37,8 +42,7 @@ public class Address implements Serializable {
         this.id = id;
     }
 
-    public Address(int id, String street, String AdditionalInfo) {
-        this.id = id;
+    public Address(String street, String AdditionalInfo) {
         this.street = street;
         this.AdditionalInfo = AdditionalInfo;
     }
@@ -65,9 +69,20 @@ public class Address implements Serializable {
     public List<InfoEntity> getIEList() {
         return IEList;
     }
+    public void addIE(InfoEntity ie){
+        IEList.add(ie);
+    }
 
     public void setIEList(List<InfoEntity> IEList) {
         this.IEList = IEList;
+    }
+
+    public CityInfo getCityInfo() {
+        return cityInfo;
+    }
+
+    public void setCityInfo(CityInfo cityInfo) {
+        this.cityInfo = cityInfo;
     }
     
    
