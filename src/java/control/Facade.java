@@ -40,6 +40,7 @@ public class Facade {
             CityInfo ci = getCityInfo(zip);
             a.setCityInfo(ci);
             p.setAddress(a);
+            
             em.getTransaction().begin();
             em.persist(p);
             em.getTransaction().commit();
@@ -54,6 +55,7 @@ public class Facade {
         }
 
     }
+   
     public CityInfo getCityInfo(String zip){
         EntityManager em = getEntityManager();
         try {
@@ -67,6 +69,12 @@ public class Facade {
 
             }
         }
+    }
+    
+    public List<Person> getAllPersons(){
+        EntityManager em = getEntityManager();
+        List<Person> pList = em.createQuery("Select p From Person p").getResultList();
+        return pList;
     }
 
 }
