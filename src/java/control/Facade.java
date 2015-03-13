@@ -76,5 +76,11 @@ public class Facade {
         List<Person> pList = em.createQuery("Select p From Person p").getResultList();
         return pList;
     }
+    
+    public Person getOnePerson(int id){
+        EntityManager em = getEntityManager();
+        return em.find(Person.class, id);
+        
+    }
 
 }

@@ -26,8 +26,8 @@ public class Hobby implements Serializable {
     private int id;
     private String name;
     private String description;
-    @ManyToMany(mappedBy = "hobbyList")
-    public List<Person> personList = new ArrayList();
+//    @ManyToMany(mappedBy = "hobbyList")
+//    public List<Person> personList = new ArrayList();
     
     public Hobby(String name, String description) {
         this.name = name;
@@ -62,12 +62,12 @@ public class Hobby implements Serializable {
         this.description = description;
     }
 
-    public List<Person> getPersonList() {
-        return personList;
-    }
-
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
-    }
+//    public List<Person> getPersonList() {
+//        return personList;
+//    }
+//
+//    public void setPersonList(List<Person> personList) {
+//        this.personList = personList;
+//    }
     
 }

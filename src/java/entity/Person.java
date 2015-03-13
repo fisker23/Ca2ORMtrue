@@ -18,8 +18,8 @@ import javax.persistence.ManyToMany;
 public class Person extends InfoEntity{
      private String firstName;
     private String lastName;
-    @ManyToMany
-    public List<Hobby> hobbyList = new ArrayList();
+//    @ManyToMany
+//    public List<Hobby> hobbyList = new ArrayList();
 
     public Person(String firstName, String lastName, String email) {
         super(email);
@@ -43,13 +43,13 @@ public class Person extends InfoEntity{
         this.lastName = lastName;
     }
 
-    public List<Hobby> getHobbyList() {
-        return hobbyList;
-    }
-
-    public void setHobbyList(List<Hobby> hobbyList) {
-        this.hobbyList = hobbyList;
-    }
+//    public List<Hobby> getHobbyList() {
+//        return hobbyList;
+//    }
+//
+//    public void setHobbyList(List<Hobby> hobbyList) {
+//        this.hobbyList = hobbyList;
+//    }
 
     public Person() {
     }

@@ -11,8 +11,8 @@ import javax.persistence.Entity;
  *
  * @author Uffe
  */
-@Entity
-public class Company extends InfoEntity{
+
+public class Company {//extends InfoEntity{
     private String companyName;
     private String description;
     private int cvr;
@@ -24,7 +24,7 @@ public class Company extends InfoEntity{
     }
 
     public Company(String companyName, String description, int cvr, int numEmployees, int marketValue, String email) {
-        super(email);
+        //super(email);
         this.companyName = companyName;
         this.description = description;
         this.cvr = cvr;
