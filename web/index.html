@@ -9,57 +9,60 @@ and open the template in the editor.
         <title>Ca2ORM</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<!--            <script>
-                $(document).ready(function () {
-                 $("#btn1").click(makeAjaxCall);
-                 $("#btn1").click(makeAjaxPersonCall);
-                });
-                
-                function makeAjaxCall() {
-                    $("#div1").load("api");
-                    alert("hmm");
-                }
-                function makeAjaxPersonCall(){
-                    var request = $.ajax({
-                        alert("kage");
-                        url: "api/person",
-                        type: "GET",
-                        dataType: "json"
-                    });
-                    request.done(function (persons)
-                            $("#persons").html(msg);
-                    for(var i = 0; i < persons.length; i++){
-                        var li = "<li>";
-                        li += "<a href='"+persons[i].link+"'>"+persons[i].name+"</a></li>";
-                        $("#divting").append(li);
-                    }
-                });
-                request.fail(function (jqXHR, textStatus) {
-                    alert("Request failed: " + textStatus);
-                });
-                }
-            </script>-->
-            
-<script>
+        <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+        <script>
             $(document).ready(function () {
                 $("#btn1").click(makeAjaxCall);
                 $("#btn2").click(makeAjaxProjectCall);
+                $("#btn3").click(makePersonCall);
             }
             );
             function makeAjaxCall() {
-                $("#div1").load("api");
+                $("#divting").load("api");
+            }
+            function makePersonCall() {
+
+                var gut = {
+                        firstName : $("#firstName").val(),
+                        lastName : $("#lastName").val(),
+                        email : $("#email").val(),
+                        street : $("#street").val(),
+                        additonalInfo : $("#additonalInfo").val(),
+                        zip : $("#zip").val()
+                    };
+                alert("before");     
+                alert("Gut: " + JSON.stringify(gut));    
+
+                var request = $.ajax({
+                    type: "POST",
+                    url: "api/person",
+                    data: JSON.stringify(gut),
+                    dataType: "json",
+                    contentType: "application/json"
+                });
+                request.done(function () {
+                    alert("kage");
+                });
+                request.fail(function (status) {
+                    alert("Error occured: " + JSON.stringify(status));
+                });
+
             }
             function makeAjaxProjectCall() {
                 alert("HEllO woewlækfjg");
                 var request = $.ajax({
-                    url: "person/complete",
+                    url: "api/project",
                     type: "GET",
                     dataType: "json",
                 });
                 request.done(function (links) {
                     alert(links);
-                    $("#persons").html(links);
+                    $("#projects").html(msg);
+                    for (var i = 0; i < links.length; i++) {
+                        var li = "<li>";
+                        li += "<a href='" + links[i].link + "'>" + links[i].name + "</a></li>";
+                        $("#divting").append(li);
                     }
                 });
                 request.fail(function (jqXHR, textStatus) {
@@ -70,12 +73,21 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div id="div1">Hello world!
-            <button id="btn1">Knap1</button>
-            <button id="btn2">Knap2</button>
-            <ul id="persons">
-                
-            </ul>
+        <div id="divting">
+            <button id="btn1">Kage</button>
+            <button id="btn2">Kage2</button>
+            <ul id="projects"></ul>
+        </div>
+
+        <div id="divinput">
+            First Name: <input id="firstName" type="text"><br>
+            Last Name: <input id="lastName" type="text"><br>
+            Email: <input id="email" type="text"><br>
+            Street: <input id="street" type="text"><br>
+            AdditionalInfo: <input id="additonalInfo" type="text"><br>
+            Zip: <input id="zip" type="text"><br>
+            <button id="btn3">Create Person</button>
+
         </div>
     </body>
 </html>

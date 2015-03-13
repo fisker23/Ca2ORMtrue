@@ -55,7 +55,7 @@ public class ApiResource {
         ja.add(jo);
         }
         String str = gson.toJson(ja);
-        
+        System.out.println("GetALLPERSON called");
         return str;
     }
     
