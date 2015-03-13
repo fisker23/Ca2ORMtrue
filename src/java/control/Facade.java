@@ -34,8 +34,11 @@ public class Facade {
 
     public Person createPerson(String fn, String ln, String mail, List<Phone> phone, String street, String ai, String zip) {
         EntityManager em = getEntityManager();
+        Person p = null;
         try {
-            Person p = new Person(fn, ln, mail);
+            p = new Person(fn, ln, mail);
+            System.out.println("--------------------------------------------- inside facade");
+            
             Address a = new Address(street, ai);
             CityInfo ci = getCityInfo(zip);
             a.setCityInfo(ci);
@@ -44,15 +47,17 @@ public class Facade {
             em.getTransaction().begin();
             em.persist(p);
             em.getTransaction().commit();
-            return p;
             
-        } finally {
+            
+        }catch(Exception e){
+            System.out.println("knep mig");
+            System.err.println("ERROR: " + e.getMessage());
+        }finally {
             if (em != null) {
-
                 em.close();
-
             }
         }
+        return p;
 
     }
    

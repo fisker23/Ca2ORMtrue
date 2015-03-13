@@ -63,17 +63,23 @@ public class ApiResource {
     @Consumes("application/json")
     @Path("/person")
     public void createPerson(String jsonin){
+        System.out.println("--------------------------------------------- CREATEPERSON CALLED");
         JsonObject o = new JsonParser().parse(jsonin).getAsJsonObject();
-        String fname = o.get("firstName").getAsString();
-        String lname = o.get("lastName").getAsString();
-        String email = o.get("email").getAsString();
-        String street = o.get("street").getAsString();
-        String ai = o.get("additionalInfo").getAsString();
-        String zip = o.get("zip").getAsString();
-        
+        System.out.println("SUT");
+        String fname = o.get("firstName").toString();
+        System.out.println(fname);
+        String lname = o.get("lastName").toString();
+        System.out.println(lname);
+        String email = o.get("email").toString();
+        System.out.println(email);
+        String street = o.get("street").toString();
+        System.out.println(street);
+       String ai = o.get("additionalInfo").toString();
+        System.out.println(ai);
+        String zip = o.get("zip").toString();
+        System.out.println(zip);
         f.createPerson(fname, lname, email, null, street, ai, zip);
-        
-        
+//        f.createPerson(null, null, null, null, null, null, null);
     }
     
     @GET

@@ -28,7 +28,7 @@ and open the template in the editor.
                         lastName : $("#lastName").val(),
                         email : $("#email").val(),
                         street : $("#street").val(),
-                        additonalInfo : $("#additonalInfo").val(),
+                        additionalInfo : $("#additionalInfo").val(),
                         zip : $("#zip").val()
                     };
                 alert("before");     
@@ -42,7 +42,7 @@ and open the template in the editor.
                     contentType: "application/json"
                 });
                 request.done(function () {
-                    alert("kage");
+                    alert("Person Oprettet i databasen")
                 });
                 request.fail(function (status) {
                     alert("Error occured: " + JSON.stringify(status));
@@ -84,7 +84,7 @@ and open the template in the editor.
             Last Name: <input id="lastName" type="text"><br>
             Email: <input id="email" type="text"><br>
             Street: <input id="street" type="text"><br>
-            AdditionalInfo: <input id="additonalInfo" type="text"><br>
+            AdditionalInfo: <input id="additionalInfo" type="text"><br>
             Zip: <input id="zip" type="text"><br>
             <button id="btn3">Create Person</button>
 
